@@ -43,8 +43,8 @@ namespace AtmTests
         public void InvalidDepositUpdate()
         {
             Program.balance = 200.00M;
-            Assert.NotEqual(1200, Program.Deposit(1000M));
+            Assert.NotEqual(800, Program.Deposit(1000M));
         }
-
+        
     }
 }
