@@ -16,6 +16,9 @@ namespace AtmMachine
             while (exitProgram == false)
             {
                 Console.WriteLine();
+                Console.WriteLine("-----------------------------------------------------");
+                Console.WriteLine();
+                
                 Console.WriteLine("Welcome to Dewey, Cheatem, and Howe Banking Alliance");
                 Console.WriteLine();
                 Console.WriteLine("Available Options");
@@ -26,35 +29,49 @@ namespace AtmMachine
                 Console.WriteLine("4. Exit");
                 Console.WriteLine();
                 Console.WriteLine("-----------------------------------------------------");
+                Console.WriteLine();
                 string userInput = Console.ReadLine();
 
                 switch (userInput)
                 {
                     case "1":
                         decimal currentBalance = balance;
+                        Console.WriteLine();
+                        Console.WriteLine("-----------------------------------------------------");
                         Console.WriteLine($"Your Current Balance is: {ViewBalance()}");
+                        Console.WriteLine("-----------------------------------------------------");
                         Console.WriteLine();
                         break;
                     case "2":
+                        Console.WriteLine();
+                        Console.WriteLine("-----------------------------------------------------");
                         Console.WriteLine("How much money would you like to take from our bank?");
                         string userAmount = Console.ReadLine();
                         decimal withdraw = StringToDecimal(userAmount);
-                        Withdraw(withdraw);
-                        Console.WriteLine($"Withdraw of {userAmount} complete.");
+                        Withdraw(withdraw);                        
                         Console.WriteLine($"Updated Balance: {balance}");
+                        Console.WriteLine("-----------------------------------------------------");
                         Console.WriteLine();
                         break;
                     case "3":
+                        Console.WriteLine();
+                        Console.WriteLine("-----------------------------------------------------");
                         Console.WriteLine("How much would you like to deposit?");
                         string userDeposit = Console.ReadLine();
                         decimal deposit = StringToDecimal(userDeposit);
-                        Console.WriteLine($"Deposit Complete.");
+                        Console.WriteLine($"Deposit Complete.");                        
                         Deposit(deposit);
                         Console.WriteLine($"Updated Balance: {balance}");
+                        Console.WriteLine("-----------------------------------------------------");
+                        Console.WriteLine();
                         break;
                     case "4":
+                        Console.WriteLine();
+                        Console.WriteLine("-----------------------------------------------------");
                         Console.WriteLine("Thank you for.. trusting us with your money, we will spend it wisely");
                         Console.WriteLine("Program Terminated");
+                        Console.WriteLine("-----------------------------------------------------");
+                        Console.WriteLine();
                         exitProgram = true;
                         break;
 
