@@ -2,16 +2,15 @@
 
 namespace AtmMachine
 {
-    class Program
+    public class Program
     {
         static public decimal balance;
-        static void Main(string[] args)
+        static public void Main(string[] args)
         {
             userInterface();
-
         }
 
-        static void userInterface()
+        static public void userInterface()
         {
             bool exitProgram = false;
             while (exitProgram == false)
@@ -32,6 +31,7 @@ namespace AtmMachine
                 switch (userInput)
                 {
                     case "1":
+                        decimal currentBalance = balance;
                         Console.WriteLine($"Your Current Balance is: {ViewBalance()}");
                         Console.WriteLine();
                         break;
@@ -61,45 +61,46 @@ namespace AtmMachine
                     default:
                         Console.WriteLine("Invalid Selection Made");
                         break;
-
-
                 }
-            }
-            static decimal StringToDecimal(string str)
-            {
-                decimal number = 0;
-                try
-                {
-
-                    number = Convert.ToDecimal(str);
-
-
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine("Invalid Input.");
-                    Console.WriteLine(e.Message);
-
-                }
-                return number;
-            }
-
-            static decimal ViewBalance()
-            {
-                return balance;
-            }
-            static decimal Withdraw(decimal amountToWithdraw)
-            {
-                decimal newTotal = balance - amountToWithdraw;
-                if (newTotal < 0) { Console.WriteLine("Unable to Complete Action.  Account would be overdrawn"); }
-                else { balance = newTotal; }
-                return balance;
-            }
-            static decimal Deposit(decimal amountDeposit)
-            {
-                balance += amountDeposit;
-                return balance;
+            
+            
             }
         }
-    }
+        static public decimal StringToDecimal(string str)
+        {
+            decimal number = 0;
+            try
+            {
+
+                number = Convert.ToDecimal(str);
+
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Invalid Input.");
+                Console.WriteLine(e.Message);
+
+            }
+            return number;
+        }
+
+        static public decimal ViewBalance()
+        {
+            return balance;
+        }
+        static public decimal Withdraw(decimal amountToWithdraw)
+        {
+            decimal newTotal = balance - amountToWithdraw;
+            if (newTotal < 0) { Console.WriteLine("Unable to Complete Action.  Account would be overdrawn"); }
+            else { balance = newTotal; }
+            return balance;
+        }
+        static public decimal Deposit(decimal amountDeposit)
+        {
+            balance += amountDeposit;
+            return balance;
+        }
+
+        }
 }
