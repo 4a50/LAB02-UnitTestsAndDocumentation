@@ -41,6 +41,7 @@ namespace AtmMachine
                         Console.WriteLine($"Your Current Balance is: {ViewBalance()}");
                         Console.WriteLine("-----------------------------------------------------");
                         Console.WriteLine();
+                        waitForUser();
                         break;
                     case "2":
                         Console.WriteLine();
@@ -58,8 +59,7 @@ namespace AtmMachine
                         Console.WriteLine("-----------------------------------------------------");
                         Console.WriteLine("How much would you like to deposit?");
                         string userDeposit = Console.ReadLine();
-                        decimal deposit = StringToDecimal(userDeposit);
-                        Console.WriteLine($"Deposit Complete.");                        
+                        decimal deposit = StringToDecimal(userDeposit);                                                
                         Deposit(deposit);
                         Console.WriteLine($"Updated Balance: {balance}");
                         Console.WriteLine("-----------------------------------------------------");
@@ -103,20 +103,34 @@ namespace AtmMachine
         }
 
         static public decimal ViewBalance()
-        {
+        {           
             return balance;
         }
         static public decimal Withdraw(decimal amountToWithdraw)
         {
             decimal newTotal = balance - amountToWithdraw;
-            if (newTotal < 0) { Console.WriteLine("Unable to Complete Action.  Account would be overdrawn"); }
+            if (newTotal < 0) { 
+                Console.WriteLine("Unable to Complete Action.  Account would be overdrawn");
+                waitForUser();
+            }
+
             else { balance = newTotal; }
             return balance;
         }
         static public decimal Deposit(decimal amountDeposit)
         {
+            if (amountDeposit < 0) { 
+                Console.WriteLine("Cannot Deposit a Negative Amount.");
+                waitForUser();
+                return balance; }
             balance += amountDeposit;
+            Console.WriteLine($"Deposit Complete.");
             return balance;
+        }
+        static public void waitForUser()
+        {
+            Console.WriteLine("Press Any Key To Back to Menu");
+            Console.ReadKey();
         }
 
         }
